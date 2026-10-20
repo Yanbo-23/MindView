@@ -90,7 +90,7 @@
         <p>MindView separates offline task construction from the model-time interface. Geometry, depth, and annotations are used to validate that a target exists and that the query is well-posed; the generator receives only uncalibrated RGB context views and the language query.</p>
         <figure class="figure">
           <img src="./assets/benchmark-overview.png" alt="MindView offline construction and model-time interface" data-zoomable />
-          <figcaption><strong>Figure 1.</strong> Offline evidence validates each query and held-out target. At inference, only RGB contexts and the language query are exposed to the generator.</figcaption>
+          <figcaption><strong>Figure 1.</strong> The paper's five-stage construction pipeline validates each query and held-out target. At inference, only RGB contexts and the language query are exposed to the generator.</figcaption>
         </figure>
         <div class="protocol-grid">
           <div>
@@ -163,7 +163,7 @@
         </figure>
         <figure class="figure">
           <img src="./assets/context-budget.png" alt="MindView nested context conditions and training evidence" data-zoomable />
-          <figcaption><strong>Figure 5.</strong> The nested C3/C6/C10 analysis and the separate BAGEL-SFT comparison. More observations increase target coverage but do not guarantee a higher generation score.</figcaption>
+          <figcaption><strong>Figure 5.</strong> The paper's nested C3/C6/C10 context analysis and the separate BAGEL-SFT comparison. More observations increase target coverage but do not guarantee a higher generation score.</figcaption>
         </figure>
         <div class="findings">
           <div><strong>57.9</strong><span>GPT-Image-2 Overall</span></div>
