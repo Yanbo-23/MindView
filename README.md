@@ -2,7 +2,7 @@
 
 **Benchmarking Generative Multi-View Spatial Intelligence**
 
-[Benchmark](https://huggingface.co/datasets/wangyanbo/MindView-Bench) · [Training data](https://huggingface.co/datasets/wangyanbo/MindView-Train) · [BAGEL-SFT](https://huggingface.co/wangyanbo/MindView-BAGEL-SFT)
+[Benchmark](https://huggingface.co/datasets/wangyanbo/MindView-Bench) · [Training data](https://huggingface.co/datasets/wangyanbo/MindView-Train) · [BAGEL-SFT](https://huggingface.co/wangyanbo/MindView-BAGEL-SFT) · [Homepage](https://mindview-spatial.milkysong17.chatgpt.site)
 
 ## Release checklist
 
@@ -109,8 +109,7 @@ bash evaluation/run.sh all bagel-sft-final
 
 For the full context-scaling experiment, use the bundled
 `evaluation/data/merged_dataset_final.jsonl`, `REPORT_PROTOCOL=paper`, and separate
-output directories. This index has SHA256
-`97be55cb44c45d693acd370175805804c12f95b99bebb115f0df1e1b2077219b`.
+output directories.
 
 ### Evaluate your own model
 
@@ -135,7 +134,6 @@ The release recipe uses **20,000 shot-6 records, eight GPUs, 10,000 updates,
 AdamW, learning rate 1e-5 → 1e-6, 200 warmup steps, and EMA 0.9995**.
 
 ```bash
-bash sft/run.sh --dry-run --check-images
 bash sft/run.sh
 ```
 
@@ -154,7 +152,6 @@ Prepare the [pinned official datasets and environment](understanding/README.md),
 then run BAGEL-SFT with the same base assets and EMA checkpoint:
 
 ```bash
-bash understanding/run.sh all --dry-run
 bash understanding/run.sh all --prepare-only
 bash understanding/run.sh all
 ```
@@ -168,8 +165,8 @@ partial and kept separate from full results.
 
 ## 5. Validation and licenses
 
-Each workflow includes CPU tests. Configuration/dry runs and small fixture tests
-do not replace actual GPU generation or training validation.
+Each workflow includes CPU tests. Configuration checks and small fixture tests do
+not replace actual GPU generation or training validation.
 Run workflow tests separately to isolate their model-runtime imports:
 
 ```bash

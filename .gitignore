@@ -49,3 +49,7 @@ wandb/
 .idea/
 .vscode/
 /huggingface-upload-backups/
+
+# Published homepage source
+!/dist/
+!/dist/**
