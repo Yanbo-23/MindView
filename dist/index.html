@@ -115,10 +115,6 @@
       <section class="section" id="taxonomy">
         <h2>Task taxonomy</h2>
         <p>The seven tasks form two diagnostic families. Direct viewpoint control tests whether language can move the camera. Scene-grounded viewpoint reasoning first requires locating objects, resolving relations, or interpreting a reference frame.</p>
-        <figure class="figure">
-          <img src="./assets/task-suite.png" alt="MindView seven controlled query types grouped into direct viewpoint control and scene-grounded viewpoint reasoning" data-zoomable />
-          <figcaption><strong>Figure 3.</strong> Three direct camera-control tasks and four scene-grounded tasks share the same held-out RGB target interface.</figcaption>
-        </figure>
         <div class="taxonomy-list">
           <div class="taxonomy-family direct">
             <h3>Direct viewpoint control</h3>
@@ -158,12 +154,12 @@
         </div>
         <p class="note"><strong>Auxiliary metric.</strong> CLIP-I is retained for comparison, but it is outside the six-component Overall score. All primary scores are higher-is-better.</p>
         <figure class="figure">
-          <img src="./assets/task-profile.png" alt="MindView C6 task profile heatmap and task means across base generators" data-zoomable />
-          <figcaption><strong>Figure 4.</strong> Task-conditioned profiles show why one aggregate score is insufficient: composition is the lowest-scoring task for the six common base generators in this C6 export.</figcaption>
+          <img src="./assets/baseline-qualitative.png" alt="Qualitative comparison of generated target views on MindView" data-zoomable />
+          <figcaption><strong>Figure 3.</strong> Qualitative comparison from the paper across challenging MindView tasks.</figcaption>
         </figure>
         <figure class="figure">
           <img src="./assets/context-budget.png" alt="MindView nested context conditions and training evidence" data-zoomable />
-          <figcaption><strong>Figure 5.</strong> The paper's nested C3/C6/C10 context analysis and the separate BAGEL-SFT comparison. More observations increase target coverage but do not guarantee a higher generation score.</figcaption>
+          <figcaption><strong>Figure 4.</strong> The paper's nested C3/C6/C10 context analysis and the separate BAGEL-SFT comparison. More observations increase target coverage but do not guarantee a higher generation score.</figcaption>
         </figure>
         <div class="findings">
           <div><strong>57.9</strong><span>GPT-Image-2 Overall</span></div>
@@ -183,10 +179,6 @@
           <a href="https://github.com/Yanbo-23/MindView/tree/main/evaluation" target="_blank" rel="noreferrer"><span>Evaluation code</span><small>Generation, metrics, report building, and reproducibility checks ↗</small></a>
           <a href="https://github.com/Yanbo-23/MindView/tree/main/understanding" target="_blank" rel="noreferrer"><span>Spatial-understanding transfer</span><small>SAT-v2, MMSI-Bench, and MindCube-Tiny evaluation entry points ↗</small></a>
         </div>
-        <figure class="figure figure-small release-figure">
-          <img src="./assets/sft-task-profile.png" alt="BAGEL supervised fine-tuning task profile from the MindView paper" data-zoomable />
-          <figcaption><strong>Figure 6.</strong> Task-level comparison for the released supervised adaptation study.</figcaption>
-        </figure>
         <p class="release-status"><strong>Release status.</strong> The benchmark, evaluation pipeline, training data, and BAGEL-SFT checkpoint are available. The training-free MindCue strategy is described in the paper but is not part of the open-source code release.</p>
       </section>
 
