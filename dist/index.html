@@ -14,7 +14,8 @@
         <p class="project-label">MindView</p>
         <h1>MindView: Benchmarking Generative Multi-View Spatial Intelligence</h1>
         <p class="subtitle">Language-guided target-view generation from multiple RGB images of indoor scenes.</p>
-        <p class="project-credit">MindView project release</p>
+        <p class="authors"><a href="https://github.com/Yanbo-23" target="_blank" rel="noreferrer">Yanbo Wang</a><sup>1</sup>, <a href="https://lyh-18.github.io/" target="_blank" rel="noreferrer">Yihao Liu</a><sup>2</sup>, <a href="https://ivg.au.tsinghua.edu.cn/Jiwen_Lu_bak/" target="_blank" rel="noreferrer">Jiwen Lu</a><sup>3</sup></p>
+        <p class="affiliations"><sup>1</sup> MindView project &nbsp;·&nbsp; <sup>2</sup> Shanghai Artificial Intelligence Laboratory &nbsp;·&nbsp; <sup>3</sup> Department of Automation, Tsinghua University</p>
         <nav class="resource-links" aria-label="Project resources">
           <a href="https://github.com/Yanbo-23/MindView" target="_blank" rel="noreferrer">Code</a>
           <a href="https://huggingface.co/datasets/wangyanbo/MindView-Bench" target="_blank" rel="noreferrer">Benchmark data</a>
@@ -53,28 +54,15 @@
       <section class="section" id="protocol">
         <h2>Benchmark protocol</h2>
         <p>Each frozen record couples ordered RGB context views with a language instruction. A model receives only the context images and query, then produces one 512 × 512 RGB image. The fixed target and ten-view geometry references are used only by the evaluation pipeline.</p>
-        <div class="protocol-figure">
-          <div class="protocol-step">
-            <span class="step-label">Input / context</span>
-            <div class="context-grid" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-            <strong>Six RGB views</strong>
-            <small>same indoor scene</small>
-          </div>
-          <span class="protocol-arrow" aria-hidden="true">→</span>
-          <div class="protocol-step query-step">
-            <span class="step-label">Instruction</span>
-            <blockquote>“Move the view behind the chair and face the window.”</blockquote>
-            <small>language-guided spatial query</small>
-          </div>
-          <span class="protocol-arrow" aria-hidden="true">→</span>
-          <div class="protocol-step output-step">
-            <span class="step-label">Output / target view</span>
-            <div class="target-view" aria-hidden="true"><span></span></div>
-            <strong>One RGB image</strong>
-            <small>512 × 512 target view</small>
-          </div>
-        </div>
-        <p class="caption">Figure 2. The generator sees context images and a query; target and geometric supervision remain in the evaluator.</p>
+        <table class="protocol-table">
+          <thead><tr><th>Stage</th><th>Generator access</th><th>Evaluator-only information</th></tr></thead>
+          <tbody>
+            <tr><th>Context</th><td>Six ordered RGB views of the same indoor scene.</td><td>Fixed target view and ten geometry-scoring references.</td></tr>
+            <tr><th>Instruction</th><td>One language query describing a spatial change or object relation.</td><td>Depth and numerical camera parameters.</td></tr>
+            <tr><th>Prediction</th><td>One 512 × 512 RGB target-view image.</td><td>Reference images and metric computation.</td></tr>
+          </tbody>
+        </table>
+        <p class="caption">Table 1. Information available to the generator and retained by the evaluation pipeline.</p>
       </section>
 
       <section class="section" id="tasks">
@@ -118,7 +106,7 @@
             </tbody>
           </table>
         </div>
-        <p class="caption">Table 1. Primary and auxiliary components in the public evaluation chain.</p>
+        <p class="caption">Table 2. Primary and auxiliary components in the public evaluation chain.</p>
       </section>
 
       <section class="section" id="release">
