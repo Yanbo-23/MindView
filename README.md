@@ -2,7 +2,7 @@
 
 **Benchmarking Generative Multi-View Spatial Intelligence**
 
-[Benchmark](https://huggingface.co/datasets/wangyanbo/MindView-Bench) · [Training data](https://huggingface.co/datasets/wangyanbo/MindView-Train) · [BAGEL-SFT](https://huggingface.co/wangyanbo/MindView-BAGEL-SFT) · [Homepage](https://mindview-spatial.milkysong17.chatgpt.site)
+[Benchmark](https://huggingface.co/datasets/wangyanbo/MindView-Bench) · [Training data](https://huggingface.co/datasets/wangyanbo/MindView-Train) · [BAGEL-SFT](https://huggingface.co/wangyanbo/MindView-BAGEL-SFT) · [Homepage](https://yanbo-23.github.io/MindView/)
 
 ## Release checklist
 
