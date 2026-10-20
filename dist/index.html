@@ -4,86 +4,137 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#ffffff" />
-    <meta name="description" content="MindView benchmarks generative multi-view spatial intelligence with language-guided target-view generation." />
-    <title>MindView: Generative Multi-View Spatial Intelligence</title>
+    <meta name="description" content="MindView benchmarks generative multi-view spatial intelligence through language-guided target-view generation." />
+    <meta property="og:title" content="MindView: Benchmarking Generative Multi-View Spatial Intelligence" />
+    <meta property="og:description" content="A benchmark for language-guided target-view generation from partial multi-view observations." />
+    <meta property="og:image" content="https://yanbo-23.github.io/MindView/assets/teaser.png" />
+    <meta property="og:url" content="https://yanbo-23.github.io/MindView/" />
+    <title>MindView: Benchmarking Generative Multi-View Spatial Intelligence</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <header class="masthead" id="top">
-      <div class="wrap">
-        <p class="project-label">MindView</p>
+    <header class="hero" id="top">
+      <div class="hero-inner">
+        <p class="eyebrow">MindView · Generative multi-view spatial intelligence</p>
         <h1>MindView: Benchmarking Generative Multi-View Spatial Intelligence</h1>
-        <p class="subtitle">Language-guided target-view generation from multiple RGB images of indoor scenes.</p>
-        <p class="authors"><a href="https://github.com/Yanbo-23" target="_blank" rel="noreferrer">Yanbo Wang</a><sup>1</sup>, <a href="https://lyh-18.github.io/" target="_blank" rel="noreferrer">Yihao Liu</a><sup>2</sup>, <a href="https://ivg.au.tsinghua.edu.cn/Jiwen_Lu_bak/" target="_blank" rel="noreferrer">Jiwen Lu</a><sup>3</sup></p>
-        <p class="affiliations"><sup>1</sup> MindView project &nbsp;·&nbsp; <sup>2</sup> Shanghai Artificial Intelligence Laboratory &nbsp;·&nbsp; <sup>3</sup> Department of Automation, Tsinghua University</p>
-        <nav class="resource-links" aria-label="Project resources">
-          <a href="https://github.com/Yanbo-23/MindView" target="_blank" rel="noreferrer">Code</a>
-          <a href="https://huggingface.co/datasets/wangyanbo/MindView-Bench" target="_blank" rel="noreferrer">Benchmark data</a>
-          <a href="https://huggingface.co/datasets/wangyanbo/MindView-Train" target="_blank" rel="noreferrer">Training data</a>
-          <a href="https://huggingface.co/wangyanbo/MindView-BAGEL-SFT" target="_blank" rel="noreferrer">BAGEL-SFT</a>
-        </nav>
-        <nav class="contents" aria-label="Page contents">
-          <span>Contents</span>
-          <a href="#overview">Overview</a>
-          <a href="#protocol">Protocol</a>
-          <a href="#tasks">Tasks</a>
-          <a href="#evaluation">Evaluation</a>
-          <a href="#release">Release</a>
-        </nav>
+        <p class="dek">A benchmark for language-guided target-view generation from partial multi-view observations.</p>
+        <div class="hero-actions" aria-label="Project resources">
+          <a class="button button-dark" href="https://github.com/Yanbo-23/MindView" target="_blank" rel="noreferrer">Code</a>
+          <a class="button" href="https://huggingface.co/datasets/wangyanbo/MindView-Bench" target="_blank" rel="noreferrer">Benchmark</a>
+          <a class="button" href="https://huggingface.co/datasets/wangyanbo/MindView-Train" target="_blank" rel="noreferrer">Training data</a>
+          <a class="button" href="https://huggingface.co/wangyanbo/MindView-BAGEL-SFT" target="_blank" rel="noreferrer">Checkpoint</a>
+        </div>
       </div>
     </header>
 
-    <main class="wrap main-content">
-      <figure class="hero-figure">
-        <img src="./assets/teaser.png" alt="MindView teaser showing geometry-dominant and semantics-dominant spatial tasks" />
-        <figcaption>Figure 1. MindView organizes language-guided target-view generation into geometry-dominant and semantics-dominant tasks.</figcaption>
+    <main class="article">
+      <section class="byline" aria-label="Authors and affiliations">
+        <div class="authors">
+          <div>
+            <span>Yanbo Wang</span><sup>1,2</sup>,
+            <span>Siqi Luo</span><sup>3,2</sup>,
+            <span>Siyu Zhang</span><sup>4,2</sup>,
+            <span>Chenming Zhu</span><sup>5</sup>
+          </div>
+          <div>
+            <span>Wenzhao Zheng</span><sup>6</sup>,
+            <span>Qian Yu</span><sup>2</sup>,
+            <span>Juncheng Yan</span><sup>1,2</sup>,
+            <span>Bin Fu</span><sup>2</sup>
+          </div>
+          <div>
+            <span>Tai Wang</span><sup>2</sup>,
+            <span>Yu Qiao</span><sup>2</sup>,
+            <span>Yihao Liu</span><sup>2,†</sup>,
+            <span>Jiwen Lu</span><sup>1,†</sup>
+          </div>
+        </div>
+        <p class="affiliations">
+          <span><sup>1</sup>Tsinghua University</span>
+          <span><sup>2</sup>Shanghai Artificial Intelligence Laboratory</span>
+          <span><sup>3</sup>Shanghai Jiao Tong University</span>
+          <span><sup>4</sup>Fudan University</span>
+          <span><sup>5</sup>The University of Hong Kong</span>
+          <span><sup>6</sup>University of California, Berkeley</span>
+        </p>
+        <p class="byline-note"><sup>†</sup>Corresponding authors · <a href="mailto:liuyihao@pjlab.org.cn">liuyihao@pjlab.org.cn</a> · <a href="mailto:lujiwen@tsinghua.edu.cn">lujiwen@tsinghua.edu.cn</a></p>
+      </section>
+
+      <nav class="section-nav" aria-label="Page sections">
+        <a href="#overview">Overview</a>
+        <a href="#protocol">Protocol</a>
+        <a href="#taxonomy">Tasks</a>
+        <a href="#evaluation">Evaluation</a>
+        <a href="#release">Release</a>
+      </nav>
+
+      <figure class="figure figure-hero">
+        <img src="./assets/teaser.png" alt="MindView teaser showing geometry-dominant and semantics-dominant task families, benchmark statistics, and metrics" data-zoomable />
+        <figcaption><strong>MindView.</strong> Seven diagnostic tasks turn partial multi-view observations and a language query into a held-out target-view generation problem.</figcaption>
       </figure>
 
       <section class="section" id="overview">
         <h2>Overview</h2>
-        <p>MindView evaluates whether a generative model can observe several views of an indoor scene, understand a spatial query, and render the requested target view. The benchmark contains <strong>1,500 cases from 513 scenes</strong> across ScanNet, ScanNet++, and ARKitScenes. The standard input is six context images and one spatial query; target images, depth, and numerical camera parameters are withheld from the generator.</p>
-        <p>The release combines the benchmark, a reproducible BAGEL supervised fine-tuning recipe, a published BAGEL-SFT checkpoint, and spatial-understanding transfer evaluations. Nested C3/C6/C10 settings create <strong>4,500 experiment records</strong> over the same frozen cases.</p>
-        <div class="facts" aria-label="MindView benchmark facts">
-          <div><strong>1,500</strong><span>benchmark cases</span></div>
+        <p>Spatial intelligence is usually evaluated through questions about objects, relations, and viewpoints. MindView asks a complementary generative question: given several RGB observations of the same indoor scene, can a model generate the view requested by language?</p>
+        <p>The model must integrate evidence across views, infer the requested camera position and orientation, and render a consistent image. The target image, target pose, depth, and scene annotations remain sealed until evaluation.</p>
+        <div class="stat-strip" aria-label="MindView at a glance">
+          <div><strong>1,500</strong><span>benchmark samples</span></div>
           <div><strong>513</strong><span>indoor scenes</span></div>
-          <div><strong>7</strong><span>spatial tasks</span></div>
+          <div><strong>7</strong><span>controlled tasks</span></div>
           <div><strong>6</strong><span>primary metrics</span></div>
         </div>
       </section>
 
       <section class="section" id="protocol">
         <h2>Benchmark protocol</h2>
-        <p>Each frozen record couples ordered RGB context views with a language instruction. A model receives only the context images and query, then produces one 512 × 512 RGB image. The fixed target and ten-view geometry references are used only by the evaluation pipeline.</p>
-        <table class="protocol-table">
-          <thead><tr><th>Stage</th><th>Generator access</th><th>Evaluator-only information</th></tr></thead>
-          <tbody>
-            <tr><th>Context</th><td>Six ordered RGB views of the same indoor scene.</td><td>Fixed target view and ten geometry-scoring references.</td></tr>
-            <tr><th>Instruction</th><td>One language query describing a spatial change or object relation.</td><td>Depth and numerical camera parameters.</td></tr>
-            <tr><th>Prediction</th><td>One 512 × 512 RGB target-view image.</td><td>Reference images and metric computation.</td></tr>
-          </tbody>
-        </table>
-        <p class="caption">Table 1. Information available to the generator and retained by the evaluation pipeline.</p>
+        <p>MindView separates offline task construction from the model-time interface. Geometry, depth, and annotations are used to validate that a target exists and that the query is well-posed; the generator receives only uncalibrated RGB context views and the language query.</p>
+        <figure class="figure">
+          <img src="./assets/benchmark-overview.png" alt="MindView offline construction and model-time interface" data-zoomable />
+          <figcaption><strong>Figure 1.</strong> Offline evidence validates each query and held-out target. At inference, only RGB contexts and the language query are exposed to the generator.</figcaption>
+        </figure>
+        <div class="protocol-grid">
+          <div>
+            <h3>Model input</h3>
+            <p><strong>C<sub>K</sub></strong>: an ordered set of 3, 6, or 10 RGB observations from one scene, plus one spatial query <strong>q</strong>.</p>
+          </div>
+          <div>
+            <h3>Model output</h3>
+            <p>A single 512 × 512 RGB image, intended to depict the queried target view while preserving scene identity and layout.</p>
+          </div>
+          <div>
+            <h3>Sealed for scoring</h3>
+            <p>The real target image, camera pose, depth, mesh, and object metadata are withheld until the evaluation pipeline runs.</p>
+          </div>
+        </div>
+        <figure class="figure figure-small">
+          <img src="./assets/statistics.png" alt="MindView dataset statistics across ScanNet, ScanNet++, and ARKitScenes" data-zoomable />
+          <figcaption><strong>Figure 2.</strong> The frozen benchmark contains 1,500 samples from ScanNet, ScanNet++, and ARKitScenes. Counts are shown for the seven task types.</figcaption>
+        </figure>
       </section>
 
-      <section class="section" id="tasks">
+      <section class="section" id="taxonomy">
         <h2>Task taxonomy</h2>
-        <p>Seven tasks probe camera motion, object-centered intent, and instructions that combine both forms of spatial evidence.</p>
-        <div class="task-columns">
-          <div class="task-group geometry-group">
-            <h3>Geometry-dominant tasks</h3>
+        <p>The seven tasks form two diagnostic families. Direct viewpoint control tests whether language can move the camera. Scene-grounded viewpoint reasoning first requires locating objects, resolving relations, or interpreting a reference frame.</p>
+        <figure class="figure">
+          <img src="./assets/task-suite.png" alt="MindView seven controlled query types grouped into direct viewpoint control and scene-grounded viewpoint reasoning" data-zoomable />
+          <figcaption><strong>Figure 3.</strong> Three direct camera-control tasks and four scene-grounded tasks share the same held-out RGB target interface.</figcaption>
+        </figure>
+        <div class="taxonomy-list">
+          <div class="taxonomy-family direct">
+            <h3>Direct viewpoint control</h3>
             <ol>
-              <li><span>01</span><div><strong>Translation</strong><small>Move to a requested position.</small></div></li>
-              <li><span>02</span><div><strong>Rotation</strong><small>Turn the viewpoint toward a new direction.</small></div></li>
-              <li><span>03</span><div><strong>Composition</strong><small>Change position and orientation together.</small></div></li>
+              <li><span>01</span><div><strong>Translation</strong><small>Move to a requested relative position.</small></div></li>
+              <li><span>02</span><div><strong>Rotation</strong><small>Turn the viewpoint while preserving position.</small></div></li>
+              <li><span>03</span><div><strong>Composition</strong><small>Compose ordered translation and rotation actions.</small></div></li>
             </ol>
           </div>
-          <div class="task-group semantic-group">
-            <h3>Semantics-dominant tasks</h3>
-            <ol start="4">
-              <li><span>04</span><div><strong>Relational object grounding</strong><small>Locate an object through relations to its surroundings.</small></div></li>
-              <li><span>05</span><div><strong>Target-facing reorientation</strong><small>Reorient the camera toward a named target.</small></div></li>
-              <li><span>06</span><div><strong>Object-centric repositioning</strong><small>Move around an object while preserving its role.</small></div></li>
-              <li><span>07</span><div><strong>Multi-cue viewpoint inference</strong><small>Resolve several spatial cues in one instruction.</small></div></li>
+          <div class="taxonomy-family grounded">
+            <h3>Scene-grounded viewpoint reasoning</h3>
+            <ol>
+              <li><span>04</span><div><strong>Relational object grounding</strong><small>Resolve a referred object through its scene relations.</small></div></li>
+              <li><span>05</span><div><strong>Target-facing reorientation</strong><small>Locate an object and turn toward it from the anchor.</small></div></li>
+              <li><span>06</span><div><strong>Object-centric repositioning</strong><small>Move around an object and produce an object-facing view.</small></div></li>
+              <li><span>07</span><div><strong>Multi-cue viewpoint inference</strong><small>Infer position and heading from several scene cues.</small></div></li>
             </ol>
           </div>
         </div>
@@ -91,48 +142,56 @@
 
       <section class="section" id="evaluation">
         <h2>Evaluation</h2>
-        <p>MindView reports six primary components across visual alignment, semantic consistency, image quality, and geometry. Scores are aggregated by task before the overall average; CLIP-I is retained as an auxiliary comparison.</p>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Metric</th><th>Evaluation focus</th><th>Role</th></tr></thead>
+        <p>Generated views are scored against the sealed real target. The six primary components cover content fidelity, language-relevant scene agreement, image quality, and target-view geometry. Scores are averaged within tasks and then equally across the seven tasks.</p>
+        <div class="metric-table-wrap">
+          <table class="metric-table">
+            <thead><tr><th>Component</th><th>What it measures</th><th>Evaluator</th></tr></thead>
             <tbody>
-              <tr><td>DINO-I</td><td>Image-level visual alignment</td><td>Primary</td></tr>
-              <tr><td>Semantic</td><td>Object and instruction consistency</td><td>Primary</td></tr>
-              <tr><td>Spatial</td><td>Viewpoint and scene arrangement</td><td>Primary</td></tr>
-              <tr><td>Quality</td><td>Perceptual image quality</td><td>Primary</td></tr>
-              <tr><td>VGGT-RScore</td><td>Relative geometric structure</td><td>Primary</td></tr>
-              <tr><td>VGGT-TScore</td><td>Translation consistency</td><td>Primary</td></tr>
-              <tr><td>CLIP-I</td><td>Auxiliary image similarity</td><td>Auxiliary</td></tr>
+              <tr><th>DINO-I</th><td>Image-level visual content fidelity</td><td>DINOv2-Large</td></tr>
+              <tr><th>Semantic</th><td>Scene entities and relations</td><td>Qwen3-VL judge</td></tr>
+              <tr><th>Spatial</th><td>Viewpoint, layout, and visible arrangement</td><td>Qwen3-VL judge</td></tr>
+              <tr><th>Quality</th><td>Internal coherence and rendering defects</td><td>Qwen3-VL judge</td></tr>
+              <tr><th>RScore</th><td>Relative target-view rotation consistency</td><td>VGGT</td></tr>
+              <tr><th>TScore</th><td>Target-view translation consistency</td><td>VGGT</td></tr>
             </tbody>
           </table>
         </div>
-        <p class="caption">Table 2. Primary and auxiliary components in the public evaluation chain.</p>
+        <p class="note"><strong>Auxiliary metric.</strong> CLIP-I is retained for comparison, but it is outside the six-component Overall score. All primary scores are higher-is-better.</p>
+        <figure class="figure">
+          <img src="./assets/task-profile.png" alt="MindView C6 task profile heatmap and task means across base generators" data-zoomable />
+          <figcaption><strong>Figure 4.</strong> Task-conditioned profiles show why one aggregate score is insufficient: composition is the lowest-scoring task for the six common base generators in this C6 export.</figcaption>
+        </figure>
+        <figure class="figure">
+          <img src="./assets/context-budget.png" alt="MindView nested context conditions and training evidence" data-zoomable />
+          <figcaption><strong>Figure 5.</strong> The nested C3/C6/C10 analysis and the separate BAGEL-SFT comparison. More observations increase target coverage but do not guarantee a higher generation score.</figcaption>
+        </figure>
+        <div class="findings">
+          <div><strong>57.9</strong><span>GPT-Image-2 Overall</span></div>
+          <div><strong>64.4</strong><span>BAGEL-SFT Overall</span></div>
+          <div><strong>+24.3</strong><span>BAGEL → BAGEL-SFT gain</span></div>
+          <div><strong>88.4 → 92.0%</strong><span>target coverage, C6 → C10</span></div>
+        </div>
       </section>
 
       <section class="section" id="release">
         <h2>Release</h2>
-        <div class="release-grid">
-          <div>
-            <p>The public repository contains the evaluation pipeline, frozen metadata, BAGEL-SFT recipe, inference code, and transfer evaluation guides. The linked Hugging Face repositories provide the benchmark, training data, and inference checkpoint.</p>
-            <div class="release-buttons">
-              <a class="primary-link" href="https://github.com/Yanbo-23/MindView" target="_blank" rel="noreferrer">Open the code repository ↗</a>
-              <a href="https://huggingface.co/datasets/wangyanbo/MindView-Bench" target="_blank" rel="noreferrer">Explore MindView-Bench ↗</a>
-            </div>
-          </div>
-          <table class="release-table">
-            <tbody>
-              <tr><th>Benchmark</th><td><a href="https://huggingface.co/datasets/wangyanbo/MindView-Bench" target="_blank" rel="noreferrer">MindView-Bench</a></td></tr>
-              <tr><th>Training</th><td><a href="https://huggingface.co/datasets/wangyanbo/MindView-Train" target="_blank" rel="noreferrer">MindView-Train</a></td></tr>
-              <tr><th>Checkpoint</th><td><a href="https://huggingface.co/wangyanbo/MindView-BAGEL-SFT" target="_blank" rel="noreferrer">MindView-BAGEL-SFT</a></td></tr>
-              <tr><th>Transfer</th><td><a href="https://github.com/Yanbo-23/MindView/tree/main/understanding" target="_blank" rel="noreferrer">SAT-v2 · MMSI-Bench · MindCube-Tiny</a></td></tr>
-            </tbody>
-          </table>
+        <p>MindView is released as a reproducible benchmark and evaluation package. The public artifacts below correspond to the frozen data, training recipe, inference checkpoint, and metric pipeline used by the project.</p>
+        <div class="release-list">
+          <a href="https://huggingface.co/datasets/wangyanbo/MindView-Bench" target="_blank" rel="noreferrer"><span>MindView-Bench</span><small>Frozen benchmark metadata, RGB/depth resources, and evaluation records ↗</small></a>
+          <a href="https://huggingface.co/datasets/wangyanbo/MindView-Train" target="_blank" rel="noreferrer"><span>MindView-Train</span><small>Target-view generation training data and the released recipe ↗</small></a>
+          <a href="https://huggingface.co/wangyanbo/MindView-BAGEL-SFT" target="_blank" rel="noreferrer"><span>MindView-BAGEL-SFT</span><small>Published BAGEL-SFT EMA checkpoint for inference and evaluation ↗</small></a>
+          <a href="https://github.com/Yanbo-23/MindView/tree/main/evaluation" target="_blank" rel="noreferrer"><span>Evaluation code</span><small>Generation, metrics, report building, and reproducibility checks ↗</small></a>
+          <a href="https://github.com/Yanbo-23/MindView/tree/main/understanding" target="_blank" rel="noreferrer"><span>Spatial-understanding transfer</span><small>SAT-v2, MMSI-Bench, and MindCube-Tiny evaluation entry points ↗</small></a>
         </div>
-        <p class="release-note"><strong>Release status.</strong> Benchmark, evaluation, and BAGEL-SFT are available. The Training-Free strategy (MindCue) is not open-sourced yet.</p>
+        <figure class="figure figure-small release-figure">
+          <img src="./assets/sft-task-profile.png" alt="BAGEL supervised fine-tuning task profile from the MindView paper" data-zoomable />
+          <figcaption><strong>Figure 6.</strong> Task-level comparison for the released supervised adaptation study.</figcaption>
+        </figure>
+        <p class="release-status"><strong>Release status.</strong> The benchmark, evaluation pipeline, training data, and BAGEL-SFT checkpoint are available. The training-free MindCue strategy is described in the paper but is not part of the open-source code release.</p>
       </section>
 
       <footer class="footer">
-        <span>MindView project</span>
+        <span>MindView · Generative multi-view spatial intelligence</span>
         <a href="#top">Back to top ↑</a>
       </footer>
     </main>

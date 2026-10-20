@@ -1,15 +1,12 @@
 (() => {
-  const links = document.querySelectorAll('.contents a');
-  const sections = [...links].map((link) => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+  const links = [...document.querySelectorAll('.section-nav a')];
+  const sections = links.map((link) => document.querySelector(link.getAttribute('href'))).filter(Boolean);
   if (!('IntersectionObserver' in window)) return;
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      const link = document.querySelector(`.contents a[href="#${entry.target.id}"]`);
-      if (link && entry.isIntersecting) {
-        links.forEach((item) => item.classList.remove('current'));
-        link.classList.add('current');
-      }
+      if (!entry.isIntersecting) return;
+      links.forEach((link) => link.classList.toggle('current', link.getAttribute('href') === `#${entry.target.id}`));
     });
-  }, { rootMargin: '-20% 0px -70% 0px' });
+  }, { rootMargin: '-20% 0px -68% 0px', threshold: 0 });
   sections.forEach((section) => observer.observe(section));
 })();
