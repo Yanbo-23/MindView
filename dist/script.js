@@ -1,29 +1,15 @@
 (() => {
-  const reveals = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries, instance) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          instance.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    reveals.forEach((element) => observer.observe(element));
-  } else {
-    reveals.forEach((element) => element.classList.add('is-visible'));
-  }
-
-  const filters = document.querySelectorAll('.filter-button');
-  const cards = document.querySelectorAll('.task-card');
-  filters.forEach((button) => {
-    button.addEventListener('click', () => {
-      const selected = button.dataset.filter;
-      filters.forEach((item) => item.classList.toggle('is-active', item === button));
-      cards.forEach((card) => {
-        const matches = selected === 'all' || card.dataset.group === selected || (selected === 'geometry' && card.classList.contains('semantics') && card.querySelector('.task-tag')?.textContent.includes('GEOMETRY'));
-        card.classList.toggle('is-hidden', !matches);
-      });
+  const links = document.querySelectorAll('.contents a');
+  const sections = [...links].map((link) => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+  if (!('IntersectionObserver' in window)) return;
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      const link = document.querySelector(`.contents a[href="#${entry.target.id}"]`);
+      if (link && entry.isIntersecting) {
+        links.forEach((item) => item.classList.remove('current'));
+        link.classList.add('current');
+      }
     });
-  });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  sections.forEach((section) => observer.observe(section));
 })();

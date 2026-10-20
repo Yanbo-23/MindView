@@ -3,180 +3,151 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#f4f0e8" />
-    <meta
-      name="description"
-      content="MindView benchmarks generative multi-view spatial intelligence with language-guided target-view generation."
-    />
-    <title>MindView — Multi-View Spatial Intelligence</title>
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="description" content="MindView benchmarks generative multi-view spatial intelligence with language-guided target-view generation." />
+    <title>MindView: Generative Multi-View Spatial Intelligence</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <div class="page-shell">
-      <header class="site-header" id="top">
-        <a class="brand" href="#top" aria-label="MindView home">
-          <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
-          <span>MINDVIEW</span>
-        </a>
-        <nav class="desktop-nav" aria-label="Primary navigation">
-          <a href="#benchmark">Benchmark</a>
+    <header class="masthead" id="top">
+      <div class="wrap">
+        <p class="project-label">MindView</p>
+        <h1>MindView: Benchmarking Generative Multi-View Spatial Intelligence</h1>
+        <p class="subtitle">Language-guided target-view generation from multiple RGB images of indoor scenes.</p>
+        <p class="project-credit">MindView project release</p>
+        <nav class="resource-links" aria-label="Project resources">
+          <a href="https://github.com/Yanbo-23/MindView" target="_blank" rel="noreferrer">Code</a>
+          <a href="https://huggingface.co/datasets/wangyanbo/MindView-Bench" target="_blank" rel="noreferrer">Benchmark data</a>
+          <a href="https://huggingface.co/datasets/wangyanbo/MindView-Train" target="_blank" rel="noreferrer">Training data</a>
+          <a href="https://huggingface.co/wangyanbo/MindView-BAGEL-SFT" target="_blank" rel="noreferrer">BAGEL-SFT</a>
+        </nav>
+        <nav class="contents" aria-label="Page contents">
+          <span>Contents</span>
+          <a href="#overview">Overview</a>
+          <a href="#protocol">Protocol</a>
           <a href="#tasks">Tasks</a>
           <a href="#evaluation">Evaluation</a>
           <a href="#release">Release</a>
         </nav>
-        <a class="header-link" href="https://github.com/Yanbo-23/MindView" target="_blank" rel="noreferrer">
-          View code <span aria-hidden="true">↗</span>
-        </a>
-      </header>
+      </div>
+    </header>
 
-      <main>
-        <section class="hero section-pad" aria-labelledby="hero-title">
-          <div class="hero-copy reveal">
-            <p class="eyebrow"><span class="eyebrow-dot"></span> Benchmark + BAGEL-SFT release</p>
-            <h1 id="hero-title">Teach models to <em>see the room</em> from every angle.</h1>
-            <p class="hero-lede">
-              MindView tests whether a model can read several views, follow a spatial instruction,
-              and render the right target view of an indoor scene.
-            </p>
-            <div class="hero-actions">
-              <a class="button button-primary" href="#benchmark">Explore the benchmark <span aria-hidden="true">↓</span></a>
-              <a class="button button-ghost" href="https://huggingface.co/datasets/wangyanbo/MindView-Bench" target="_blank" rel="noreferrer">Open on Hugging Face <span aria-hidden="true">↗</span></a>
-            </div>
-            <div class="hero-facts" aria-label="MindView at a glance">
-              <div><strong>1,500</strong><span>test cases</span></div>
-              <div><strong>513</strong><span>indoor scenes</span></div>
-              <div><strong>7</strong><span>spatial tasks</span></div>
-            </div>
-          </div>
+    <main class="wrap main-content">
+      <figure class="hero-figure">
+        <img src="./assets/teaser.png" alt="MindView teaser showing geometry-dominant and semantics-dominant spatial tasks" />
+        <figcaption>Figure 1. MindView organizes language-guided target-view generation into geometry-dominant and semantics-dominant tasks.</figcaption>
+      </figure>
 
-          <div class="hero-visual reveal reveal-delay-1">
-            <div class="visual-note note-top">six context views <span aria-hidden="true">→</span></div>
-            <figure class="teaser-card">
-              <div class="teaser-window"><img src="./assets/teaser.png" alt="MindView teaser showing geometry and semantics task families with representative metrics" /></div>
-              <figcaption>
-                <span>MindView-Bench</span>
-                <span>language-guided target-view generation</span>
-              </figcaption>
-            </figure>
-            <div class="visual-note note-bottom"><span aria-hidden="true">↙</span> one target view to score</div>
-          </div>
-        </section>
+      <section class="section" id="overview">
+        <h2>Overview</h2>
+        <p>MindView evaluates whether a generative model can observe several views of an indoor scene, understand a spatial query, and render the requested target view. The benchmark contains <strong>1,500 cases from 513 scenes</strong> across ScanNet, ScanNet++, and ARKitScenes. The standard input is six context images and one spatial query; target images, depth, and numerical camera parameters are withheld from the generator.</p>
+        <p>The release combines the benchmark, a reproducible BAGEL supervised fine-tuning recipe, a published BAGEL-SFT checkpoint, and spatial-understanding transfer evaluations. Nested C3/C6/C10 settings create <strong>4,500 experiment records</strong> over the same frozen cases.</p>
+        <div class="facts" aria-label="MindView benchmark facts">
+          <div><strong>1,500</strong><span>benchmark cases</span></div>
+          <div><strong>513</strong><span>indoor scenes</span></div>
+          <div><strong>7</strong><span>spatial tasks</span></div>
+          <div><strong>6</strong><span>primary metrics</span></div>
+        </div>
+      </section>
 
-        <section class="stat-band section-pad" aria-label="Release facts">
-          <div class="stat-intro"><span class="section-kicker">The signal</span><strong>Spatial intelligence is more than a pretty frame.</strong></div>
-          <div class="stat-item"><strong>6</strong><span>context images in the standard protocol</span></div>
-          <div class="stat-item"><strong>4,500</strong><span>nested C3 / C6 / C10 experiment records</span></div>
-          <div class="stat-item"><strong>6</strong><span>primary image and geometry metrics</span></div>
-        </section>
+      <section class="section" id="protocol">
+        <h2>Benchmark protocol</h2>
+        <p>Each frozen record couples ordered RGB context views with a language instruction. A model receives only the context images and query, then produces one 512 × 512 RGB image. The fixed target and ten-view geometry references are used only by the evaluation pipeline.</p>
+        <div class="protocol-figure">
+          <div class="protocol-step">
+            <span class="step-label">Input / context</span>
+            <div class="context-grid" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <strong>Six RGB views</strong>
+            <small>same indoor scene</small>
+          </div>
+          <span class="protocol-arrow" aria-hidden="true">→</span>
+          <div class="protocol-step query-step">
+            <span class="step-label">Instruction</span>
+            <blockquote>“Move the view behind the chair and face the window.”</blockquote>
+            <small>language-guided spatial query</small>
+          </div>
+          <span class="protocol-arrow" aria-hidden="true">→</span>
+          <div class="protocol-step output-step">
+            <span class="step-label">Output / target view</span>
+            <div class="target-view" aria-hidden="true"><span></span></div>
+            <strong>One RGB image</strong>
+            <small>512 × 512 target view</small>
+          </div>
+        </div>
+        <p class="caption">Figure 2. The generator sees context images and a query; target and geometric supervision remain in the evaluator.</p>
+      </section>
 
-        <section class="benchmark section-pad" id="benchmark" aria-labelledby="benchmark-title">
-          <div class="section-heading reveal">
-            <p class="section-kicker">01 / The benchmark</p>
-            <h2 id="benchmark-title">A controlled test of <span>observation → instruction → view.</span></h2>
-            <p>
-              Every case starts with RGB observations of the same indoor scene and a spatial query.
-              The generator must infer the requested camera change while target images, depth, and numerical camera parameters stay hidden.
-            </p>
+      <section class="section" id="tasks">
+        <h2>Task taxonomy</h2>
+        <p>Seven tasks probe camera motion, object-centered intent, and instructions that combine both forms of spatial evidence.</p>
+        <div class="task-columns">
+          <div class="task-group geometry-group">
+            <h3>Geometry-dominant tasks</h3>
+            <ol>
+              <li><span>01</span><div><strong>Translation</strong><small>Move to a requested position.</small></div></li>
+              <li><span>02</span><div><strong>Rotation</strong><small>Turn the viewpoint toward a new direction.</small></div></li>
+              <li><span>03</span><div><strong>Composition</strong><small>Change position and orientation together.</small></div></li>
+            </ol>
           </div>
-          <div class="protocol-grid">
-            <div class="protocol-card reveal">
-              <div class="protocol-label"><span class="step-number">01</span><span>Observe</span></div>
-              <div class="view-stack" aria-hidden="true">
-                <div class="mini-view view-a"></div><div class="mini-view view-b"></div><div class="mini-view view-c"></div>
-                <div class="mini-view view-d"></div><div class="mini-view view-e"></div><div class="mini-view view-f"></div>
-              </div>
-              <h3>Six context images</h3>
-              <p>Views from ScanNet, ScanNet++, and ARKitScenes establish the room and its geometry.</p>
-            </div>
-            <div class="protocol-card protocol-query reveal reveal-delay-1">
-              <div class="protocol-label"><span class="step-number">02</span><span>Interpret</span></div>
-              <div class="query-card"><span class="query-bubble">?</span><p>“Move the view behind the chair and face the window.”</p><span class="query-lines"></span></div>
-              <h3>One spatial query</h3>
-              <p>Language specifies translation, rotation, composition, or an object-centered relation.</p>
-            </div>
-            <div class="protocol-card protocol-target reveal reveal-delay-2">
-              <div class="protocol-label"><span class="step-number">03</span><span>Render</span></div>
-              <div class="target-frame"><span class="target-crosshair" aria-hidden="true"></span><span class="target-label">512 × 512 RGB</span></div>
-              <h3>One target view</h3>
-              <p>The output is scored against fixed references with image, semantic, spatial, and geometric checks.</p>
-            </div>
+          <div class="task-group semantic-group">
+            <h3>Semantics-dominant tasks</h3>
+            <ol start="4">
+              <li><span>04</span><div><strong>Relational object grounding</strong><small>Locate an object through relations to its surroundings.</small></div></li>
+              <li><span>05</span><div><strong>Target-facing reorientation</strong><small>Reorient the camera toward a named target.</small></div></li>
+              <li><span>06</span><div><strong>Object-centric repositioning</strong><small>Move around an object while preserving its role.</small></div></li>
+              <li><span>07</span><div><strong>Multi-cue viewpoint inference</strong><small>Resolve several spatial cues in one instruction.</small></div></li>
+            </ol>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section class="tasks section-pad" id="tasks" aria-labelledby="tasks-title">
-          <div class="section-heading tasks-heading reveal">
-            <div>
-              <p class="section-kicker">02 / The task map</p>
-              <h2 id="tasks-title">Seven ways to ask<br /><span>where the camera should go.</span></h2>
-            </div>
-            <p>MindView separates geometric movement from semantic intent, then combines both in multi-cue instructions.</p>
-          </div>
-          <div class="task-controls" role="group" aria-label="Filter task cards">
-            <button class="filter-button is-active" data-filter="all" type="button">All tasks</button>
-            <button class="filter-button" data-filter="geometry" type="button">Geometry</button>
-            <button class="filter-button" data-filter="semantics" type="button">Semantics</button>
-          </div>
-          <div class="task-grid">
-            <article class="task-card geometry reveal" data-group="geometry"><span class="task-index">01</span><span class="task-tag blue">GEOMETRY</span><h3>Translation</h3><p>Move to a requested position while preserving the scene.</p><span class="task-arrow" aria-hidden="true">↗</span></article>
-            <article class="task-card geometry reveal reveal-delay-1" data-group="geometry"><span class="task-index">02</span><span class="task-tag blue">GEOMETRY</span><h3>Rotation</h3><p>Turn the viewpoint toward a new direction.</p><span class="task-arrow" aria-hidden="true">↗</span></article>
-            <article class="task-card geometry reveal reveal-delay-2" data-group="geometry"><span class="task-index">03</span><span class="task-tag blue">GEOMETRY</span><h3>Composition</h3><p>Change position and orientation together.</p><span class="task-arrow" aria-hidden="true">↗</span></article>
-            <article class="task-card semantics reveal" data-group="semantics"><span class="task-index">04</span><span class="task-tag coral">SEMANTICS</span><h3>Relational grounding</h3><p>Locate an object through relations to its surroundings.</p><span class="task-arrow" aria-hidden="true">↗</span></article>
-            <article class="task-card semantics reveal reveal-delay-1" data-group="semantics"><span class="task-index">05</span><span class="task-tag coral">SEMANTICS</span><h3>Target-facing reorientation</h3><p>Reorient the camera toward a named target.</p><span class="task-arrow" aria-hidden="true">↗</span></article>
-            <article class="task-card semantics reveal reveal-delay-2" data-group="semantics"><span class="task-index">06</span><span class="task-tag coral">SEMANTICS</span><h3>Object-centric repositioning</h3><p>Move around an object while keeping its role in view.</p><span class="task-arrow" aria-hidden="true">↗</span></article>
-            <article class="task-card semantics task-card-wide reveal" data-group="semantics"><span class="task-index">07</span><span class="task-tag coral">SEMANTICS + GEOMETRY</span><h3>Multi-cue viewpoint inference</h3><p>Resolve several spatial cues in one instruction, combining scene geometry and semantic anchors.</p><span class="task-arrow" aria-hidden="true">↗</span></article>
-          </div>
-        </section>
+      <section class="section" id="evaluation">
+        <h2>Evaluation</h2>
+        <p>MindView reports six primary components across visual alignment, semantic consistency, image quality, and geometry. Scores are aggregated by task before the overall average; CLIP-I is retained as an auxiliary comparison.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Metric</th><th>Evaluation focus</th><th>Role</th></tr></thead>
+            <tbody>
+              <tr><td>DINO-I</td><td>Image-level visual alignment</td><td>Primary</td></tr>
+              <tr><td>Semantic</td><td>Object and instruction consistency</td><td>Primary</td></tr>
+              <tr><td>Spatial</td><td>Viewpoint and scene arrangement</td><td>Primary</td></tr>
+              <tr><td>Quality</td><td>Perceptual image quality</td><td>Primary</td></tr>
+              <tr><td>VGGT-RScore</td><td>Relative geometric structure</td><td>Primary</td></tr>
+              <tr><td>VGGT-TScore</td><td>Translation consistency</td><td>Primary</td></tr>
+              <tr><td>CLIP-I</td><td>Auxiliary image similarity</td><td>Auxiliary</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="caption">Table 1. Primary and auxiliary components in the public evaluation chain.</p>
+      </section>
 
-        <section class="evaluation section-pad" id="evaluation" aria-labelledby="evaluation-title">
-          <div class="evaluation-copy reveal">
-            <p class="section-kicker">03 / The evaluation stack</p>
-            <h2 id="evaluation-title">One image.<br /><span>Six lenses.</span></h2>
-            <p>
-              MindView treats a target view as a structured prediction. The report builder keeps the primary metrics separate so a high visual score cannot hide a geometric or semantic miss.
-            </p>
-            <a class="text-link" href="https://github.com/Yanbo-23/MindView/tree/main/evaluation" target="_blank" rel="noreferrer">Read the evaluation guide <span aria-hidden="true">↗</span></a>
-          </div>
-          <div class="metric-board reveal reveal-delay-1">
-            <div class="metric-row metric-head"><span>Metric family</span><span>What it checks</span><span>Role</span></div>
-            <div class="metric-row"><span class="metric-name"><i class="metric-dot green"></i>DINO-I</span><span>image-level visual alignment</span><b>PRIMARY</b></div>
-            <div class="metric-row"><span class="metric-name"><i class="metric-dot coral"></i>Semantic</span><span>object and instruction consistency</span><b>PRIMARY</b></div>
-            <div class="metric-row"><span class="metric-name"><i class="metric-dot blue"></i>Spatial</span><span>viewpoint and scene arrangement</span><b>PRIMARY</b></div>
-            <div class="metric-row"><span class="metric-name"><i class="metric-dot gold"></i>Quality</span><span>perceptual image quality</span><b>PRIMARY</b></div>
-            <div class="metric-row"><span class="metric-name"><i class="metric-dot violet"></i>VGGT-RScore</span><span>relative geometric structure</span><b>PRIMARY</b></div>
-            <div class="metric-row"><span class="metric-name"><i class="metric-dot ink"></i>VGGT-TScore</span><span>translation consistency</span><b>PRIMARY</b></div>
-            <div class="metric-row metric-foot"><span>CLIP-I is retained as an auxiliary comparison.</span><span></span><span></span></div>
-          </div>
-        </section>
-
-        <section class="release section-pad" id="release" aria-labelledby="release-title">
-          <div class="release-panel reveal">
-            <div class="release-copy">
-              <p class="section-kicker">04 / The release</p>
-              <h2 id="release-title">From benchmark<br /><span>to a reproducible run.</span></h2>
-              <p>
-                The public release keeps the data, evaluation chain, and BAGEL supervised fine-tuning recipe together, with pinned snapshots and workflow guides for each stage.
-              </p>
-              <div class="release-actions">
-                <a class="button button-light" href="https://github.com/Yanbo-23/MindView" target="_blank" rel="noreferrer">Browse the repository <span aria-hidden="true">↗</span></a>
-                <a class="button button-outline-light" href="https://huggingface.co/wangyanbo/MindView-BAGEL-SFT" target="_blank" rel="noreferrer">Get BAGEL-SFT <span aria-hidden="true">↗</span></a>
-              </div>
-            </div>
-            <div class="release-links" aria-label="Release resources">
-              <a href="https://huggingface.co/datasets/wangyanbo/MindView-Bench" target="_blank" rel="noreferrer"><span class="resource-type">DATASET</span><strong>MindView-Bench</strong><span class="resource-arrow">↗</span></a>
-              <a href="https://huggingface.co/datasets/wangyanbo/MindView-Train" target="_blank" rel="noreferrer"><span class="resource-type">TRAINING</span><strong>MindView-Train</strong><span class="resource-arrow">↗</span></a>
-              <a href="https://github.com/Yanbo-23/MindView/tree/main/understanding" target="_blank" rel="noreferrer"><span class="resource-type">TRANSFER</span><strong>Understanding benchmarks</strong><span class="resource-arrow">↗</span></a>
-              <div class="release-status"><span class="status-dot"></span><span><b>Release status</b><br />Benchmark, evaluation, and BAGEL-SFT are available. The Training-Free strategy is not open-sourced yet.</span></div>
+      <section class="section" id="release">
+        <h2>Release</h2>
+        <div class="release-grid">
+          <div>
+            <p>The public repository contains the evaluation pipeline, frozen metadata, BAGEL-SFT recipe, inference code, and transfer evaluation guides. The linked Hugging Face repositories provide the benchmark, training data, and inference checkpoint.</p>
+            <div class="release-buttons">
+              <a class="primary-link" href="https://github.com/Yanbo-23/MindView" target="_blank" rel="noreferrer">Open the code repository ↗</a>
+              <a href="https://huggingface.co/datasets/wangyanbo/MindView-Bench" target="_blank" rel="noreferrer">Explore MindView-Bench ↗</a>
             </div>
           </div>
-        </section>
-      </main>
+          <table class="release-table">
+            <tbody>
+              <tr><th>Benchmark</th><td><a href="https://huggingface.co/datasets/wangyanbo/MindView-Bench" target="_blank" rel="noreferrer">MindView-Bench</a></td></tr>
+              <tr><th>Training</th><td><a href="https://huggingface.co/datasets/wangyanbo/MindView-Train" target="_blank" rel="noreferrer">MindView-Train</a></td></tr>
+              <tr><th>Checkpoint</th><td><a href="https://huggingface.co/wangyanbo/MindView-BAGEL-SFT" target="_blank" rel="noreferrer">MindView-BAGEL-SFT</a></td></tr>
+              <tr><th>Transfer</th><td><a href="https://github.com/Yanbo-23/MindView/tree/main/understanding" target="_blank" rel="noreferrer">SAT-v2 · MMSI-Bench · MindCube-Tiny</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="release-note"><strong>Release status.</strong> Benchmark, evaluation, and BAGEL-SFT are available. The Training-Free strategy (MindCue) is not open-sourced yet.</p>
+      </section>
 
-      <footer class="site-footer section-pad">
-        <div class="footer-brand"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>MINDVIEW</span></div>
-        <p>Generative multi-view spatial intelligence.</p>
-        <div class="footer-links"><a href="#top">Back to top ↑</a><a href="https://github.com/Yanbo-23/MindView" target="_blank" rel="noreferrer">GitHub ↗</a></div>
+      <footer class="footer">
+        <span>MindView project</span>
+        <a href="#top">Back to top ↑</a>
       </footer>
-    </div>
+    </main>
     <script src="./script.js" defer></script>
   </body>
 </html>
