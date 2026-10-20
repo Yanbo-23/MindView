@@ -1,0 +1,1 @@
+"""MindView spatial-understanding evaluation."""

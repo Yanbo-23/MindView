@@ -1,0 +1,4 @@
+-r ../sft/requirements.txt
+accelerate>=0.34.0,<2
+pyarrow>=11,<20
+typing_extensions>=4.5

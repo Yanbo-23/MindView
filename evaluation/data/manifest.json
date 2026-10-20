@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "artifact": "merged_dataset_final.jsonl",
+  "sha256": "97be55cb44c45d693acd370175805804c12f95b99bebb115f0df1e1b2077219b",
+  "num_rows": 4500,
+  "num_groups": 1500,
+  "shots": {
+    "3": 1500,
+    "6": 1500,
+    "10": 1500
+  },
+  "group_task_counts": {
+    "anchor_guided_relative_repositioning": 190,
+    "composition": 300,
+    "loc-re-facing": 132,
+    "obj_loc": 127,
+    "rotation": 238,
+    "translation": 270,
+    "view_localization": 243
+  },
+  "prompt_mode": "benchmark",
+  "base_seed": 42,
+  "source_catalog_sha256": "d1af04ada498307da99410ad268ca8837a5c4c997eebfd7776a80c4313f6785b",
+  "all_accepted_sha256": "f7a0e15ff8cd77b91d2c09cb500b5ef55b31e2d53077936ffcf46a7f202b9aab"
+}

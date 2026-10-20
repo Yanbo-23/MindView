@@ -1,0 +1,48 @@
+# Local configuration and credentials
+config.env
+.env
+.env.*
+!.env.example
+
+# Python environments, caches, and test output
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.venv/
+venv/
+.coverage
+htmlcov/
+*.egg-info/
+build/
+dist/
+
+# External resources and generated runs
+/ckpt/
+/outputs/
+/models/
+/resources/
+/huggingface-upload/
+/setup_environment.sh
+/packages/
+checkpoints/
+wandb/
+
+# Downloaded binary/model artifacts
+*.whl
+*.tar
+*.tar.gz
+*.zip
+*.bin
+*.safetensors
+*.pt
+*.pth
+*.ckpt
+*.log
+
+# Editor and operating-system files
+.DS_Store
+.idea/
+.vscode/
+/huggingface-upload-backups/

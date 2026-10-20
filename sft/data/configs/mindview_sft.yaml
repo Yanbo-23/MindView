@@ -1,0 +1,41 @@
+mindview_sft:
+  dataset_names:
+  - mindview_shot6_20k
+
+  # The frozen snapshot contains exactly 20,000 unique shot-6 rows. Its image
+  # contract is center-square crop followed by BAGEL resize.
+  image_transform_args:
+    image_stride: 16
+    max_image_size: 512
+    min_image_size: 512
+    max_pixels: 262144
+  vit_image_transform_args:
+    image_stride: 14
+    max_image_size: 518
+    min_image_size: 518
+    max_pixels: 268324
+
+  image_roots:
+    scannet: "${SCANNET_ROOT}"
+    scannetpp: "${SCANNETPP_ROOT}"
+    arkitscenes: "${ARKITSCENES_ROOT}"
+
+  # Each JSONL row fixes its own shot and contains only that context list.
+  # The loader never resamples or replaces the row-level shot.
+  shuffle_seed: 0
+
+  expected_schema_version: mindview_bagel_single_shot_v1
+  expected_preprocess_id: center_square_then_bagel_resize_v1
+  expected_manifest_sha256: 24d973dc5b2f967d105a6f2a55f46d8f2b0c2d5b262dbd785a60e10ee84627d5
+  strict_schema: true
+
+  # BAGEL applies VAE/ViT/text dropout independently. Keep every MindView
+  # reference intact for the first SFT run.
+  enable_condition_dropout: false
+
+  # This is the only dataset group, so mandatory packing is unnecessary.
+  is_mandatory: false
+  resume_data_status: true
+  num_used_data:
+  - 20000
+  weight: 1.0

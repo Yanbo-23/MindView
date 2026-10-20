@@ -1,0 +1,348 @@
+{
+  "schema_version": 1,
+  "benchmark": {
+    "expected_num_samples": 4500,
+    "shots": [
+      3,
+      6,
+      10
+    ],
+    "expected_samples_per_shot": 1500,
+    "datasets": [
+      "arkitscenes",
+      "scannet",
+      "scannetpp"
+    ],
+    "tasks": [
+      "translation",
+      "rotation",
+      "composition",
+      "obj_loc",
+      "loc-re-facing",
+      "anchor_guided_relative_repositioning",
+      "view_localization"
+    ],
+    "require_adjacent_shot_groups": true,
+    "require_context_subsequence": true,
+    "triplet_equal_fields": [
+      "dataset",
+      "task_type",
+      "scene_id",
+      "gt_frame_id",
+      "anchor_frame_id",
+      "instruction"
+    ],
+    "key_fields": [
+      "dataset",
+      "shot",
+      "task_type",
+      "sample_id"
+    ],
+    "metadata_fields": [
+      "dataset",
+      "task_type",
+      "shot",
+      "scene_id",
+      "gt_frame_id",
+      "anchor_frame_id"
+    ]
+  },
+  "models": {
+    "mode": "discover",
+    "include": [],
+    "exclude": [],
+    "order": [
+      "bagel",
+      "flux2",
+      "qwen-image-edit-2511",
+      "emu3.5",
+      "dreamomni2",
+      "sensenova-u1",
+      "sensenova-u1.5",
+      "gpt-image-2",
+      "nano-banana-pro",
+      "gpt-image-1.5",
+      "nano-banana",
+      "bagel-sft-final"
+    ],
+    "display_names": {
+      "bagel": "BAGEL",
+      "flux2": "FLUX.2",
+      "qwen-image-edit-2511": "Qwen-Image-Edit-2511",
+      "emu3.5": "Emu3.5",
+      "dreamomni2": "DreamOmni2",
+      "sensenova-u1": "SenseNova-U1",
+      "sensenova-u1.5": "SenseNova-U1.5",
+      "gpt-image-2": "GPT-Image-2",
+      "nano-banana-pro": "Nano Banana Pro",
+      "gpt-image-1.5": "GPT-Image-1.5",
+      "nano-banana": "Nano Banana",
+      "bagel-sft-final": "BAGEL-SFT-final"
+    }
+  },
+  "task_display": {
+    "translation": "Translation",
+    "rotation": "Rotation",
+    "composition": "Composition",
+    "obj_loc": "Relational Object Grounding",
+    "loc-re-facing": "Target-Facing Reorientation",
+    "anchor_guided_relative_repositioning": "Object-Centric Repositioning",
+    "view_localization": "Multi-Cue Viewpoint Inference"
+  },
+  "task_groups": {
+    "Geometry-centric Camera Motion": [
+      "translation",
+      "rotation",
+      "composition"
+    ],
+    "Semantics-grounded Spatial Reasoning": [
+      "obj_loc",
+      "loc-re-facing",
+      "anchor_guided_relative_repositioning",
+      "view_localization"
+    ]
+  },
+  "metrics": [
+    {
+      "name": "dino_i",
+      "label": "DINO-I (x100)",
+      "source": "clip_dino",
+      "field": "dino_i",
+      "scale": 100.0,
+      "raw_range": [
+        -1.0,
+        1.0
+      ],
+      "direction": "higher",
+      "config_hash_field": "metric_config_sha256"
+    },
+    {
+      "name": "semantic",
+      "label": "Semantic",
+      "source": "qwen_vl",
+      "field": "semantic_score_100",
+      "scale": 1.0,
+      "raw_range": [
+        0.0,
+        100.0
+      ],
+      "direction": "higher",
+      "config_hash_field": "metric_config_sha256",
+      "row_assertions": {
+        "judge_version": "qwen_judge_v2",
+        "parse_success": true,
+        "fidelity_parse_success": true,
+        "quality_parse_success": true
+      }
+    },
+    {
+      "name": "spatial",
+      "label": "Spatial",
+      "source": "qwen_vl",
+      "field": "spatial_score_100",
+      "scale": 1.0,
+      "raw_range": [
+        0.0,
+        100.0
+      ],
+      "direction": "higher",
+      "config_hash_field": "metric_config_sha256"
+    },
+    {
+      "name": "quality",
+      "label": "Visual Quality",
+      "source": "qwen_vl",
+      "field": "visual_quality_score_100",
+      "scale": 1.0,
+      "raw_range": [
+        0.0,
+        100.0
+      ],
+      "direction": "higher",
+      "config_hash_field": "metric_config_sha256"
+    },
+    {
+      "name": "vggt_rscore",
+      "label": "VGGT-RScore",
+      "source": "vggt",
+      "field": "rscore_0_100",
+      "scale": 1.0,
+      "raw_range": [
+        0.0,
+        100.0
+      ],
+      "direction": "higher",
+      "config_hash_field": "metric_config_sha256",
+      "row_assertions": {
+        "num_contexts": 10,
+        "context_source_shot": 10,
+        "trans_error_unit": "m"
+      }
+    },
+    {
+      "name": "vggt_tscore",
+      "label": "VGGT-TScore",
+      "source": "vggt",
+      "field": "tscore_0_100",
+      "scale": 1.0,
+      "raw_range": [
+        0.0,
+        100.0
+      ],
+      "direction": "higher",
+      "config_hash_field": "metric_config_sha256"
+    }
+  ],
+  "composites": [
+    {
+      "name": "avg6",
+      "label": "Avg.",
+      "members": [
+        "dino_i",
+        "semantic",
+        "spatial",
+        "quality",
+        "vggt_rscore",
+        "vggt_tscore"
+      ],
+      "weights": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "direction": "higher"
+    }
+  ],
+  "tables": [
+    {
+      "name": "scores_by_model_shot_dataset_task",
+      "type": "aggregate",
+      "source": "samples",
+      "group_by": [
+        "model",
+        "shot",
+        "dataset",
+        "task_type"
+      ]
+    },
+    {
+      "name": "scores_by_model_shot_task",
+      "type": "aggregate",
+      "source": "samples",
+      "group_by": [
+        "model",
+        "shot",
+        "task_type"
+      ],
+      "rank_within": [
+        "shot",
+        "task_type"
+      ],
+      "rank_columns": "all_scores",
+      "primary_rank": "avg6"
+    },
+    {
+      "name": "table_c6_taskwise",
+      "type": "select",
+      "source": "scores_by_model_shot_task",
+      "filters": {
+        "shot": [
+          6
+        ]
+      }
+    },
+    {
+      "name": "scores_by_model_shot",
+      "type": "aggregate",
+      "source": "scores_by_model_shot_task",
+      "group_by": [
+        "model",
+        "shot"
+      ],
+      "equal_over": [
+        "task_type"
+      ],
+      "rank_within": [
+        "shot"
+      ],
+      "rank_columns": "all_scores",
+      "primary_rank": "avg6"
+    },
+    {
+      "name": "table_c6_overall",
+      "type": "select",
+      "source": "scores_by_model_shot",
+      "filters": {
+        "shot": [
+          6
+        ]
+      }
+    },
+    {
+      "name": "scores_by_model_task",
+      "type": "aggregate",
+      "source": "scores_by_model_shot_task",
+      "group_by": [
+        "model",
+        "task_type"
+      ],
+      "equal_over": [
+        "shot"
+      ],
+      "rank_within": [
+        "task_type"
+      ],
+      "rank_columns": "all_scores",
+      "primary_rank": "avg6"
+    },
+    {
+      "name": "scores_by_model",
+      "type": "aggregate",
+      "source": "scores_by_model_shot",
+      "group_by": [
+        "model"
+      ],
+      "equal_over": [
+        "shot"
+      ],
+      "rank_within": [],
+      "rank_columns": "all_scores",
+      "primary_rank": "avg6"
+    },
+    {
+      "name": "context_deltas",
+      "type": "shot_comparison",
+      "source": "scores_by_model_shot",
+      "index": [
+        "model"
+      ],
+      "dimension": "shot",
+      "levels": [
+        3,
+        6,
+        10
+      ],
+      "deltas": [
+        [
+          6,
+          3
+        ],
+        [
+          10,
+          6
+        ]
+      ],
+      "primary_rank": "avg6_mean"
+    }
+  ],
+  "output": {
+    "write_sample_scores": true,
+    "float_precision": 17,
+    "paper_decimals": 2,
+    "primary_score": "avg6",
+    "leader_table": "scores_by_model_shot"
+  }
+}

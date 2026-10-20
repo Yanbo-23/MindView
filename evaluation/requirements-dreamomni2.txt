@@ -1,0 +1,4 @@
+-r requirements-diffusion.txt
+torchvision
+huggingface_hub
+# Also install the pinned official DreamOmni2 checkout requirements (see README).

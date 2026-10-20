@@ -1,0 +1,6 @@
+-r requirements-core.txt
+torch
+tqdm
+# Install the bundled VGGT package separately with --no-deps after this file.
+# Its Hugging Face dependencies stay pinned by requirements-judge.txt.
+# Install a compatible OpenCV build in the same metrics environment.

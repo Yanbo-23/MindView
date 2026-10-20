@@ -1,0 +1,5 @@
+-r requirements-core.txt
+torch
+transformers
+diffusers
+accelerate
