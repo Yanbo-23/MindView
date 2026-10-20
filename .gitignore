@@ -26,6 +26,9 @@ dist/
 /huggingface-upload/
 /setup_environment.sh
 /packages/
+# Optional local single-GPU verification
+/test_single_gpu.sh
+/tests/test_single_gpu.py
 checkpoints/
 wandb/
 

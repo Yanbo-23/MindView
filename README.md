@@ -11,7 +11,6 @@
 - [x] Published BAGEL-SFT checkpoint and inference pipeline
 - [x] Six-component image metrics and validated report builder
 - [x] SAT-v2, MMSI-Bench, and MindCube-Tiny evaluation
-- [x] Single-GPU end-to-end verification script
 - [ ] Training-Free strategy (MindCue) — not open-sourced yet
 
 ![MindView: seven tasks, six metrics, and representative results](assets/teaser.png)
@@ -167,26 +166,7 @@ are retained. Individual benchmark commands and result files are documented in
 [understanding](understanding/README.md). Explicit diagnostic limits are marked
 partial and kept separate from full results.
 
-## 5. Sequential single-GPU test
-
-After preparing all model assets, RGB/depth data, and the three QA datasets:
-
-```bash
-bash test_single_gpu.sh --config "$PWD/config.env" --gpu 0 --dry-run
-bash test_single_gpu.sh --config "$PWD/config.env" --gpu 0
-```
-
-The [single script](test_single_gpu.sh) selects ten random standard C6 cases
-(seed 42), generates with BAGEL-SFT, computes all six scores, writes the subset
-report, then evaluates the three **full** understanding benchmarks sequentially.
-Every stage uses one visible GPU and exits before the next stage if it fails.
-Outputs/logs default to `outputs/single_gpu_test/`; identical inputs can resume.
-Use a new `--output-root` when changing the seed or checkpoint. The ten-case
-report covers only sampled tasks and is **not a full MindView benchmark score**.
-`--understanding-limit N` is an explicit partial diagnostic; omit it for performance
-measurement. The frozen 30B VLM judge makes an 80GB-class GPU a practical choice.
-
-## 6. Validation and licenses
+## 5. Validation and licenses
 
 Each workflow includes CPU tests. Configuration/dry runs and small fixture tests
 do not replace actual GPU generation or training validation.
@@ -196,7 +176,6 @@ Run workflow tests separately to isolate their model-runtime imports:
 (cd evaluation && python -m pytest)
 (cd sft && python -m pytest)
 python -m unittest discover -s understanding/tests
-python -m unittest discover -s tests
 ```
 
 This repository retains the root [MIT license](LICENSE), bundled
