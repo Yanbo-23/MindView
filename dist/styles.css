@@ -54,11 +54,7 @@ figcaption { margin: 11px auto 0; max-width: 950px; color: #71869b; font-size: .
 .stat-strip div:last-child { border-right: 0; }
 .stat-strip strong { display: block; color: var(--ink-deep); font-family: Georgia, "Times New Roman", serif; font-size: 2rem; font-weight: 400; line-height: 1.1; }
 .stat-strip span { display: block; margin-top: 5px; color: var(--muted); font-size: .74rem; letter-spacing: .06em; text-transform: uppercase; }
-.protocol-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 34px; }
-.protocol-grid div { padding-top: 15px; border-top: 3px solid var(--blue); }
-.protocol-grid h3, .taxonomy-family h3 { margin: 0 0 6px; font-family: Georgia, "Times New Roman", serif; font-size: 1.22rem; font-weight: 400; }
-.protocol-grid p { margin: 0; color: var(--muted); font-size: .92rem; line-height: 1.62; }
-.protocol-grid strong { color: var(--ink); }
+.taxonomy-family h3 { margin: 0 0 6px; font-family: Georgia, "Times New Roman", serif; font-size: 1.22rem; font-weight: 400; }
 .taxonomy-list { display: grid; grid-template-columns: 1fr 1.28fr; gap: 38px; margin-top: 35px; }
 .taxonomy-family { border-top: 4px solid var(--blue); }
 .taxonomy-family.grounded { border-color: var(--violet); }
@@ -115,7 +111,7 @@ tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
   .stat-strip div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
   .stat-strip div:nth-child(3) { padding-left: 0; }
   .stat-strip div:nth-child(4) { border-right: 0; }
-  .protocol-grid, .taxonomy-list { grid-template-columns: 1fr; gap: 29px; }
+  .taxonomy-list { grid-template-columns: 1fr; gap: 29px; }
   .findings { grid-template-columns: repeat(2, 1fr); }
   .findings div:nth-child(2) { border-right: 0; }
   .findings div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }

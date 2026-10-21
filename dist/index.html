@@ -92,20 +92,6 @@
           <img src="./assets/benchmark-overview.png" alt="MindView offline construction and model-time interface" data-zoomable />
           <figcaption><strong>Figure 1.</strong> The paper's five-stage construction pipeline validates each query and held-out target. At inference, only RGB contexts and the language query are exposed to the generator.</figcaption>
         </figure>
-        <div class="protocol-grid">
-          <div>
-            <h3>Model input</h3>
-            <p><strong>C<sub>K</sub></strong>: an ordered set of 3, 6, or 10 RGB observations from one scene, plus one spatial query <strong>q</strong>.</p>
-          </div>
-          <div>
-            <h3>Model output</h3>
-            <p>A single 512 × 512 RGB image, intended to depict the queried target view while preserving scene identity and layout.</p>
-          </div>
-          <div>
-            <h3>Sealed for scoring</h3>
-            <p>The real target image, camera pose, depth, mesh, and object metadata are withheld until the evaluation pipeline runs.</p>
-          </div>
-        </div>
         <figure class="figure figure-small">
           <img src="./assets/statistics.png" alt="MindView dataset statistics across ScanNet, ScanNet++, and ARKitScenes" data-zoomable />
           <figcaption><strong>Figure 2.</strong> The frozen benchmark contains 1,500 samples from ScanNet, ScanNet++, and ARKitScenes. Counts are shown for the seven task types.</figcaption>
