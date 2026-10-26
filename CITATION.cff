@@ -1,0 +1,42 @@
+cff-version: 1.2.0
+message: "If you use MindView, please cite this work."
+title: "MindView: Benchmarking Generative Multi-View Spatial Intelligence"
+type: software
+date-released: 2026-10-20
+repository-code: "https://github.com/Yanbo-23/MindView"
+url: "https://yanbo-23.github.io/MindView/"
+license: MIT
+keywords:
+  - computer vision
+  - multi-view generation
+  - spatial intelligence
+  - benchmark
+authors:
+  - family-names: Wang
+    given-names: Yanbo
+  - family-names: Luo
+    given-names: Siqi
+  - family-names: Zhang
+    given-names: Siyu
+  - family-names: Zhu
+    given-names: Chenming
+  - family-names: Zheng
+    given-names: Wenzhao
+  - family-names: Yu
+    given-names: Qian
+  - family-names: Yan
+    given-names: Juncheng
+  - family-names: Fu
+    given-names: Bin
+  - family-names: Wang
+    given-names: Tai
+  - family-names: Qiao
+    given-names: Yu
+  - family-names: Liu
+    given-names: Yihao
+  - family-names: Lu
+    given-names: Jiwen
+identifiers:
+  - type: doi
+    value: 10.48550/arXiv.2610.28622
+    description: "arXiv identifier"

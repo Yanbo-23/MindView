@@ -29,6 +29,8 @@ h1 { max-width: 1020px; margin: 0; font-family: Georgia, "Times New Roman", seri
 .button:hover { border-color: var(--blue); background: var(--blue-soft); color: var(--ink-deep); text-decoration: none; transform: translateY(-1px); }
 .button-dark { border-color: var(--ink); background: var(--ink); color: #fff; }
 .button-dark:hover { border-color: #16273b; background: #16273b; color: #fff; }
+.button-paper { border-color: #c9b9e3; background: var(--violet-soft); color: #5a4776; }
+.button-paper:hover { border-color: var(--violet); background: #e9def8; color: #493866; }
 .article { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
 .byline { padding: 34px 0 29px; text-align: center; }
 .authors { color: var(--ink-deep); font-family: Georgia, "Times New Roman", serif; font-size: 1.03rem; line-height: 1.9; }
@@ -90,6 +92,7 @@ tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
 .release-list a:hover span { color: var(--blue); }
 .release-status { max-width: none !important; margin-top: 28px !important; padding: 13px 16px; border-left: 3px solid var(--violet); background: var(--violet-soft); color: #695981 !important; font-size: .86rem; }
 .release-status strong { color: #5a4776; }
+.citation-block { margin: 26px 0 0; overflow-x: auto; padding: 19px 22px; border: 1px solid var(--line); border-radius: 5px; background: var(--wash); color: var(--ink); font: .78rem/1.6 "SFMono-Regular", Consolas, "Liberation Mono", monospace; }
 .release-figure { margin-top: 38px; }
 .footer { display: flex; justify-content: space-between; gap: 20px; padding: 25px 0 44px; border-top: 1px solid var(--line); color: #8091a2; font-size: .78rem; }
 .footer a { color: #6e87a0; }

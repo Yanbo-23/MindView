@@ -2,7 +2,7 @@
 
 **Benchmarking Generative Multi-View Spatial Intelligence**
 
-[Benchmark](https://huggingface.co/datasets/wangyanbo/MindView-Bench) · [Training data](https://huggingface.co/datasets/wangyanbo/MindView-Train) · [BAGEL-SFT](https://huggingface.co/wangyanbo/MindView-BAGEL-SFT) · [Homepage](https://yanbo-23.github.io/MindView/)
+[Paper](https://arxiv.org/abs/2610.28622) · [Benchmark](https://huggingface.co/datasets/wangyanbo/MindView-Bench) · [Training data](https://huggingface.co/datasets/wangyanbo/MindView-Train) · [BAGEL-SFT](https://huggingface.co/wangyanbo/MindView-BAGEL-SFT) · [Homepage](https://yanbo-23.github.io/MindView/)
 
 ## Release checklist
 
@@ -28,6 +28,20 @@ Seven tasks cover translation, rotation, composition, relational object groundin
 target-facing reorientation, object-centric repositioning, and multi-cue viewpoint
 inference. This release provides evaluation, BAGEL supervised fine-tuning, and
 spatial-understanding transfer evaluation.
+
+## Citation
+
+```bibtex
+@misc{wang2026mindviewbenchmarkinggenerativemultiview,
+  title={MindView: Benchmarking Generative Multi-View Spatial Intelligence},
+  author={Wang, Yanbo and Luo, Siqi and Zhang, Siyu and Zhu, Chenming and Zheng, Wenzhao and Yu, Qian and Yan, Juncheng and Fu, Bin and Wang, Tai and Qiao, Yu and Liu, Yihao and Lu, Jiwen},
+  year={2026},
+  eprint={2610.28622},
+  archivePrefix={arXiv},
+  primaryClass={cs.CV},
+  url={https://arxiv.org/abs/2610.28622}
+}
+```
 
 | Directory | Guide |
 |---|---|
