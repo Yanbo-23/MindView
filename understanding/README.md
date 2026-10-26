@@ -98,15 +98,6 @@ parser priority, and setting filter. MMSI Circular is outside this public suite.
 ## Run and resume
 
 ```bash
-# Print all three commands with no model/data reads, downloads, or result writes.
-bash understanding/run.sh all --dry-run
-
-# Validate the existing benchmark data on CPU without loading model weights.
-bash understanding/run.sh all --prepare-only
-
-# SAT/MMSI may be fetched at their fixed revisions if local paths are unset.
-bash understanding/run.sh all --prepare-only --allow-download
-
 # Run all 2,350 inference calls sequentially on the selected GPU.
 CUDA_VISIBLE_DEVICES=0 bash understanding/run.sh all
 
@@ -116,8 +107,25 @@ bash understanding/run.sh mmsi
 bash understanding/run.sh mindcube-tiny
 ```
 
+### Optional preflight
+
+Use these checks only when you want to inspect the plan or validate inputs
+before an expensive GPU run:
+
+```bash
+# Print the commands without reading data or weights, downloading, or writing.
+bash understanding/run.sh all --dry-run
+
+# Validate the existing benchmark data on CPU without loading model weights.
+bash understanding/run.sh all --prepare-only
+
+# Allow pinned SAT/MMSI downloads during the CPU preflight when local files are absent.
+bash understanding/run.sh all --prepare-only --allow-download
+```
+
 `--prepare-only` creates no score or result directory. It may populate the
 standard Hugging Face cache only when downloading was explicitly allowed.
+`--dry-run` does not read data or weights and prints the resolved commands.
 Use `--help` for local path and output overrides. `--nproc-per-node N` optionally
 launches one complete model per GPU with disjoint modulo sharding; no examples
 are repeated or padded. The default remains one process, independently of

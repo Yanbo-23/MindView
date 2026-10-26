@@ -56,6 +56,7 @@ hf download wangyanbo/MindView-Train \
   --revision c838213f3358013345b5352fdef71a76dfb0d222 \
   --local-dir resources/MindView-Train
 
+# Optional: verify every package file and TAR member without extracting.
 python resources/MindView-Train/scripts/prepare_data.py \
   --repo resources/MindView-Train --verify-only
 python resources/MindView-Train/scripts/prepare_data.py \
@@ -110,7 +111,11 @@ SFT_RECIPE=(
   --gradient-accumulation-steps 1 --num-workers 1
   --sharding-strategy FULL_SHARD --num-shard 1 --num-replicate 1
 )
+
+# Optional: validate the full recipe without importing PyTorch or using GPUs.
 bash sft/run.sh "${SFT_RECIPE[@]}" --check-images --dry-run
+
+# Start the eight-GPU training run.
 bash sft/run.sh "${SFT_RECIPE[@]}"
 ```
 

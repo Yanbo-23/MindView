@@ -82,8 +82,13 @@ python resources/MindView-Bench/scripts/prepare_data.py \
 Extraction verifies file and TAR-member hashes before restoring
 `resources/data/{scannet,scannetpp,arkitscenes}/`. The package includes **14,276
 RGB images and 14,276 depth maps**, covering generation inputs, targets, and fixed
-ten-view scoring references. Use `--verify-only` instead of `--output` for a
-check without extraction. Images and millimetre-depth values are preserved.
+ten-view scoring references. Images and millimetre-depth values are preserved.
+For an optional integrity check without extraction, run:
+
+```bash
+python resources/MindView-Bench/scripts/prepare_data.py \
+  --repo resources/MindView-Bench --verify-only
+```
 
 [Train download and preparation](sft/README.md) uses snapshot
 `c838213f3358013345b5352fdef71a76dfb0d222`: 20,000 records and 104,716 RGB images.
@@ -179,8 +184,13 @@ Prepare the [pinned official datasets and environment](understanding/README.md),
 then run BAGEL-SFT with the same base assets and EMA checkpoint:
 
 ```bash
-bash understanding/run.sh all --prepare-only
 bash understanding/run.sh all
+```
+
+Before the GPU run, an optional CPU-only preflight can validate the pinned data:
+
+```bash
+bash understanding/run.sh all --prepare-only
 ```
 
 The sequence is **SAT-v2: 150 questions in both option orders / 300 inferences;
