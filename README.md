@@ -54,20 +54,6 @@ target-facing reorientation, object-centric repositioning, and multi-cue viewpoi
 inference. This release provides evaluation, BAGEL supervised fine-tuning, and
 spatial-understanding transfer evaluation.
 
-## 🔗 Citation
-
-```bibtex
-@misc{wang2026mindviewbenchmarkinggenerativemultiview,
-  title={MindView: Benchmarking Generative Multi-View Spatial Intelligence},
-  author={Wang, Yanbo and Luo, Siqi and Zhang, Siyu and Zhu, Chenming and Zheng, Wenzhao and Yu, Qian and Yan, Juncheng and Fu, Bin and Wang, Tai and Qiao, Yu and Liu, Yihao and Lu, Jiwen},
-  year={2026},
-  eprint={2610.28622},
-  archivePrefix={arXiv},
-  primaryClass={cs.CV},
-  url={https://arxiv.org/abs/2610.28622}
-}
-```
-
 ## 📁 Repository structure
 
 | Directory | Guide |
@@ -220,3 +206,17 @@ This repository retains the root [MIT license](LICENSE), bundled
 [BAGEL license](sft/LICENSE), [VGGT license](vggt/LICENSE.txt), and
 [DreamOmni2 notice](evaluation/third_party/dreamomni2/NOTICE.md).
 Datasets and externally downloaded models retain their own terms.
+
+## 🔗 Citation
+
+```bibtex
+@misc{wang2026mindviewbenchmarkinggenerativemultiview,
+  title={MindView: Benchmarking Generative Multi-View Spatial Intelligence},
+  author={Wang, Yanbo and Luo, Siqi and Zhang, Siyu and Zhu, Chenming and Zheng, Wenzhao and Yu, Qian and Yan, Juncheng and Fu, Bin and Wang, Tai and Qiao, Yu and Liu, Yihao and Lu, Jiwen},
+  year={2026},
+  eprint={2610.28622},
+  archivePrefix={arXiv},
+  primaryClass={cs.CV},
+  url={https://arxiv.org/abs/2610.28622}
+}
+```
