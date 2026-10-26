@@ -17,9 +17,7 @@
   <p><sup>†</sup>Corresponding authors</p>
   <p>
     <a href="https://yanbo-23.github.io/MindView/">🌐 Homepage</a> |
-    <a href="https://github.com/Yanbo-23/MindView">💻 Code</a> |
     <a href="https://arxiv.org/abs/2610.28622">📑 Paper</a> |
-    <a href="https://arxiv.org/pdf/2610.28622">📖 PDF</a> |
     <a href="https://huggingface.co/datasets/wangyanbo/MindView-Bench">🤗 Benchmark</a> |
     <a href="https://huggingface.co/datasets/wangyanbo/MindView-Train">🤗 Training data</a> |
     <a href="https://huggingface.co/wangyanbo/MindView-BAGEL-SFT">🧠 Checkpoint</a>
