@@ -1,8 +1,37 @@
-# MindView: Benchmarking Generative Multi-View Spatial Intelligence
+<div align="center">
+  <h1>MindView: Benchmarking Generative Multi-View Spatial Intelligence</h1>
+  <p>
+    Yanbo Wang<sup>1,2</sup>, Siqi Luo<sup>3,2</sup>, Siyu Zhang<sup>4,2</sup>,
+    Chenming Zhu<sup>5</sup>, Wenzhao Zheng<sup>6</sup>, Qian Yu<sup>2</sup>,
+    Juncheng Yan<sup>1,2</sup>, Bin Fu<sup>2</sup>, Tai Wang<sup>2</sup>,
+    Yu Qiao<sup>2</sup>, Yihao Liu<sup>2,†</sup>, Jiwen Lu<sup>1,†</sup>
+  </p>
+  <p>
+    <sup>1</sup>Tsinghua University ·
+    <sup>2</sup>Shanghai Artificial Intelligence Laboratory ·
+    <sup>3</sup>Shanghai Jiao Tong University ·
+    <sup>4</sup>Fudan University ·
+    <sup>5</sup>The University of Hong Kong ·
+    <sup>6</sup>University of California, Berkeley
+  </p>
+  <p><sup>†</sup>Corresponding authors</p>
+  <p>
+    <a href="https://yanbo-23.github.io/MindView/">🌐 Homepage</a> |
+    <a href="https://github.com/Yanbo-23/MindView">💻 Code</a> |
+    <a href="https://arxiv.org/abs/2610.28622">📑 Paper</a> |
+    <a href="https://arxiv.org/pdf/2610.28622">📖 PDF</a> |
+    <a href="https://huggingface.co/datasets/wangyanbo/MindView-Bench">🤗 Benchmark</a> |
+    <a href="https://huggingface.co/datasets/wangyanbo/MindView-Train">🤗 Training data</a> |
+    <a href="https://huggingface.co/wangyanbo/MindView-BAGEL-SFT">🧠 Checkpoint</a>
+  </p>
+</div>
 
-[Paper](https://arxiv.org/abs/2610.28622) · [Benchmark](https://huggingface.co/datasets/wangyanbo/MindView-Bench) · [Training data](https://huggingface.co/datasets/wangyanbo/MindView-Train) · [BAGEL-SFT](https://huggingface.co/wangyanbo/MindView-BAGEL-SFT) · [Homepage](https://yanbo-23.github.io/MindView/)
+<p align="center">
+  <img src="assets/teaser.png" width="960" alt="MindView: seven tasks, six metrics, and representative results" />
+</p>
+<p align="center"><strong>MindView.</strong> Seven diagnostic tasks turn partial multi-view observations and a language query into a held-out target-view generation problem.</p>
 
-## Release checklist
+## 🔔 Release checklist
 
 - [x] MindView-Bench benchmark data and fixed evaluation metadata
 - [x] MindView-Train data and reproducible BAGEL-SFT recipe
@@ -11,9 +40,7 @@
 - [x] SAT-v2, MMSI-Bench, and MindCube-Tiny evaluation
 - [ ] Training-Free strategy (MindCue) — not open-sourced yet
 
-![MindView: seven tasks, six metrics, and representative results](assets/teaser.png)
-
-## 1. Overview
+## 🧭 Introduction
 
 MindView evaluates language-guided target-view generation from multiple RGB images
 of the same indoor scene. It contains **1,500 cases from 513 scenes** across
@@ -27,7 +54,7 @@ target-facing reorientation, object-centric repositioning, and multi-cue viewpoi
 inference. This release provides evaluation, BAGEL supervised fine-tuning, and
 spatial-understanding transfer evaluation.
 
-## Citation
+## 🔗 Citation
 
 ```bibtex
 @misc{wang2026mindviewbenchmarkinggenerativemultiview,
@@ -41,6 +68,8 @@ spatial-understanding transfer evaluation.
 }
 ```
 
+## 📁 Repository structure
+
 | Directory | Guide |
 |---|---|
 | `evaluation/` | [Generate images, import your predictions, compute metrics](evaluation/README.md) |
@@ -48,7 +77,7 @@ spatial-understanding transfer evaluation.
 | `understanding/` | [SAT-v2, MMSI-Bench, and MindCube-Tiny](understanding/README.md) |
 | `vggt/` | [Shared geometric model runtime](vggt/README.md) |
 
-## 2. Evaluate MindView
+## 🚀 Evaluate MindView
 
 ### Download resources
 
@@ -138,7 +167,7 @@ The frozen Qwen judge sees target/prediction for Semantic/Spatial and prediction
 alone for Quality. VGGT always uses the same ten source references plus GT and
 prediction; sensor depth calibrates translation to metres.
 
-## 3. BAGEL-SFT: reproduce training
+## 🧠 BAGEL-SFT: reproduce training
 
 Download the [frozen Train snapshot and pinned BAGEL assets](sft/README.md), then
 configure `TRAINING_JSONL`, the three RGB roots, and `BAGEL_MODEL_PATH`.
@@ -158,7 +187,7 @@ export and does not contain optimizer/scheduler state for exact continuation.
 Point `BAGEL_SFT_FINAL_CHECKPOINT` at the published or locally trained
 `ema.safetensors` for all generation and understanding evaluations.
 
-## 4. Three spatial-understanding benchmarks
+## 🧩 Three spatial-understanding benchmarks
 
 Prepare the [pinned official datasets and environment](understanding/README.md),
 then run BAGEL-SFT with the same base assets and EMA checkpoint:
@@ -175,7 +204,7 @@ are retained. Individual benchmark commands and result files are documented in
 [understanding](understanding/README.md). Explicit diagnostic limits are marked
 partial and kept separate from full results.
 
-## 5. Validation and licenses
+## 📄 Validation and licenses
 
 Each workflow includes CPU tests. Configuration checks and small fixture tests do
 not replace actual GPU generation or training validation.
